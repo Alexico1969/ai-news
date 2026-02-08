@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Horizon | Latest AI Intelligence</title>
+    <meta name="description"
+        content="Stay ahead with the latest breakthroughs in Artificial Intelligence, from large language models to autonomous agents and industrial AI.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="dark-theme">
+    <header id="main-header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon">AI</span>
+                <span class="logo-text">HORIZON</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#news" class="active">News</a></li>
+                    <li><a href="#models">Models</a></li>
+                    <li><a href="#enterprise">Enterprise</a></li>
+                    <li><a href="#ethics">Ethics</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" aria-label="Toggle Theme"><i data-lucide="moon"></i></button>
+                <div class="search-box">
+                    <input type="text" placeholder="Search AI Trends...">
+                    <i data-lucide="search"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-overlay"></div>
+            <img src="hero.png" alt="AI Horizon Hero" class="hero-img">
+            <div class="container hero-content">
+                <div class="badge fade-in">FEBRUARY 2026 UPDATE</div>
+                <h1 class="fade-in-up">The Future is <span>Autonomous</span></h1>
+                <p class="fade-in-up delay-1">Claude 4.6, Agent Teams, and the trillion-dollar SpaceX/xAI merger are
+                    reshaping the digital frontier.</p>
+                <div class="hero-btns fade-in-up delay-2">
+                    <button id="read-latest" class="btn btn-primary">Read Latest</button>
+                    <button id="market-pulse" class="btn btn-outline">Market Pulse</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="news" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Breaking Intelligence</h2>
+                    <p>Real-time updates from the world of Artificial Intelligence.</p>
+                </div>
+                <div id="news-grid" class="news-grid">
+                    <!-- News cards will be injected here -->
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="market" class="section alt-bg">
+            <div class="container">
+                <div class="market-ticker">
+                    <div class="ticker-item"><span class="label">NVDA</span> <span class="value up">+2.4%</span></div>
+                    <div class="ticker-item"><span class="label">MSFT</span> <span class="value up">+1.1%</span></div>
+                    <div class="ticker-item"><span class="label">GOOGL</span> <span class="value down">-0.5%</span>
+                    </div>
+                    <div class="ticker-item"><span class="label">AI FUNDING</span> <span class="value">$18B Q1</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">AI HORIZON</div>
+                <p>&copy; 2026 AI Horizon. Intelligence for the next era.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="github"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
