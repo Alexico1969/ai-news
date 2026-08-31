@@ -32,6 +32,8 @@
                 </ul>
             </nav>
             <div class="header-actions">
+                <button id="refresh-news" aria-label="Fetch latest news" title="Fetch latest news"><i
+                        data-lucide="refresh-cw"></i></button>
                 <button id="theme-toggle" aria-label="Toggle Theme"><i data-lucide="moon"></i></button>
                 <div class="search-box">
                     <input type="text" placeholder="Search AI Trends...">
@@ -46,10 +48,10 @@
             <div class="hero-overlay"></div>
             <img src="hero.png" alt="AI Horizon Hero" class="hero-img">
             <div class="container hero-content">
-                <div class="badge fade-in">FEBRUARY 2026 UPDATE</div>
+                <div class="badge fade-in" id="hero-badge">LIVE AI INTELLIGENCE</div>
                 <h1 class="fade-in-up">The Future is <span>Autonomous</span></h1>
-                <p class="fade-in-up delay-1">Claude 4.6, Agent Teams, and the trillion-dollar SpaceX/xAI merger are
-                    reshaping the digital frontier.</p>
+                <p class="fade-in-up delay-1" id="hero-lead">Fetching the latest AI news from the world's most reliable
+                    newsrooms, research institutions and frontier labs.</p>
                 <div class="hero-btns fade-in-up delay-2">
                     <button id="read-latest" class="btn btn-primary">Read Latest</button>
                     <button id="market-pulse" class="btn btn-outline">Market Pulse</button>
@@ -61,11 +63,18 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Breaking Intelligence</h2>
-                    <p>Real-time updates from the world of Artificial Intelligence.</p>
+                    <p>Live headlines pulled straight from established AI newsrooms, research institutions and labs.</p>
+                    <div id="feed-status" class="feed-status" role="status" aria-live="polite">
+                        <span class="status-dot loading"></span> Fetching latest news…
+                    </div>
                 </div>
+                <div id="source-filters" class="source-filters"></div>
                 <div id="news-grid" class="news-grid">
-                    <!-- News cards will be injected here -->
-                    <div class="loading-spinner"></div>
+                    <div class="grid-state">
+                        <div class="loading-spinner"></div>
+                        <p class="state-title">Fetching latest news…</p>
+                        <p class="state-detail">Contacting the news sources.</p>
+                    </div>
                 </div>
             </div>
         </section>

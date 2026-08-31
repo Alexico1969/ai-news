@@ -508,3 +508,215 @@ footer {
         flex-direction: column;
     }
 }
+/* Feed Status */
+.feed-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    background: var(--glass);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.feed-status strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.feed-status em {
+    font-style: normal;
+    color: #ffb347;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.6);
+    flex-shrink: 0;
+}
+
+.status-dot.loading {
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary-glow);
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+.status-dot.stale {
+    background: #ffb347;
+    box-shadow: 0 0 10px rgba(255, 179, 71, 0.6);
+}
+
+.status-dot.error {
+    background: #ff3366;
+    box-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+    }
+}
+
+#refresh-news {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+}
+
+#refresh-news:hover {
+    color: var(--primary);
+}
+
+#refresh-news.spinning i {
+    animation: spin 1s linear infinite;
+}
+
+/* Source Filters */
+.source-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.source-filters:empty {
+    display: none;
+}
+
+.chip {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 0.4rem 0.9rem;
+    border-radius: 50px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.chip span {
+    opacity: 0.5;
+    margin-left: 0.3rem;
+    font-size: 0.7rem;
+}
+
+.chip:hover {
+    color: var(--text);
+    border-color: var(--primary);
+}
+
+.chip.active {
+    background: rgba(0, 242, 255, 0.12);
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Grid States (loading / error / empty) */
+.grid-state {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    padding: 5rem 1rem;
+}
+
+.state-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+
+.state-title.error {
+    color: #ff3366;
+}
+
+.state-detail {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    max-width: 480px;
+}
+
+/* Card refinements for live content */
+.news-card {
+    text-decoration: none;
+    color: inherit;
+}
+
+.news-card h3 {
+    font-size: 1.25rem;
+}
+
+.card-footer .read-more {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    letter-spacing: 0.5px;
+}
+
+.card-footer .read-more i {
+    width: 12px;
+    height: 12px;
+}
+
+.card-img.img-failed img {
+    display: none;
+}
+
+.card-img.img-failed,
+.card-img-fallback {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 30% 20%, hsla(var(--tile-hue, 190), 90%, 55%, 0.35), transparent 60%),
+        linear-gradient(135deg, #0b0b12, #14141f);
+}
+
+.tile-initials {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: hsla(var(--tile-hue, 190), 90%, 70%, 0.9);
+    text-shadow: 0 0 25px hsla(var(--tile-hue, 190), 90%, 60%, 0.5);
+    z-index: 1;
+}
+
+.tile-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+}
