@@ -1,0 +1,12 @@
+{
+  "name": "ai-horizon",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Horizon — live AI news aggregated from reputable sources",
+  "dependencies": {
+    "@netlify/blobs": "^11.0.2"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^6.0.0"
+  }
+}
