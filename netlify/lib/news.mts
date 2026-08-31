@@ -154,7 +154,7 @@ function canonicalise(link: string): string {
     }
 }
 
-function parseFeed(xml: string, source: Source): NewsItem[] {
+function parseFeed(xml: string, source: Source, limit = MAX_PER_SOURCE): NewsItem[] {
     const blocks = xml.match(/<(item|entry)(?:\s[^>]*)?>[\s\S]*?<\/\1>/gi) ?? []
     const items: NewsItem[] = []
 
@@ -197,16 +197,17 @@ function parseFeed(xml: string, source: Source): NewsItem[] {
 
     return items
         .sort((a, b) => Date.parse(b.published) - Date.parse(a.published))
-        .slice(0, MAX_PER_SOURCE)
+        .slice(0, limit)
 }
 
-async function fetchSource(source: Source): Promise<NewsItem[]> {
+/** Fetches and parses a single feed. Exported so other endpoints can read one source directly. */
+export async function fetchFeedItems(source: Source, limit?: number): Promise<NewsItem[]> {
     const response = await fetch(source.url, {
         headers: { 'user-agent': USER_AGENT, accept: 'application/rss+xml, application/xml, text/xml, */*' },
         signal: AbortSignal.timeout(FEED_TIMEOUT_MS),
     })
     if (!response.ok) throw new Error(`${source.name} responded ${response.status}`)
-    return parseFeed(await response.text(), source)
+    return parseFeed(await response.text(), source, limit)
 }
 
 /**
@@ -215,7 +216,7 @@ async function fetchSource(source: Source): Promise<NewsItem[]> {
  * reported in `sources` and simply left out of the results.
  */
 export async function collectNews(): Promise<NewsPayload> {
-    const settled = await Promise.allSettled(SOURCES.map(fetchSource))
+    const settled = await Promise.allSettled(SOURCES.map((source) => fetchFeedItems(source)))
     const cutoff = Date.now() - MAX_AGE_DAYS * 24 * 60 * 60 * 1000
 
     const sources = settled.map((result, index) => ({

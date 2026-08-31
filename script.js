@@ -279,7 +279,11 @@ window.addEventListener('scroll', () => {
 
 document.querySelectorAll('nav a').forEach((anchor) => {
     anchor.addEventListener('click', function (event) {
-        const target = document.querySelector(this.getAttribute('href'));
+        const href = this.getAttribute('href');
+        // Links to other pages (the Models tab) navigate normally.
+        if (!href?.startsWith('#')) return;
+
+        const target = document.querySelector(href);
         if (!target) return;
 
         event.preventDefault();

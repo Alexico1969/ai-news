@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Models | AI Horizon</title>
+    <meta name="description"
+        content="The current flagship model from Google, OpenAI, Anthropic and xAI, with the newest features shipped for each one.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="dark-theme">
+    <header id="main-header">
+        <div class="container">
+            <a class="logo" href="index.html">
+                <span class="logo-icon">AI</span>
+                <span class="logo-text">HORIZON</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html#news">News</a></li>
+                    <li><a href="models.html" class="active">Models</a></li>
+                    <li><a href="index.html#enterprise">Enterprise</a></li>
+                    <li><a href="index.html#ethics">Ethics</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="refresh-models" aria-label="Fetch latest model data" title="Fetch latest model data"><i
+                        data-lucide="refresh-cw"></i></button>
+                <button id="theme-toggle" aria-label="Toggle Theme"><i data-lucide="moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="models-intro">
+            <div class="container">
+                <div class="badge" id="models-badge">FRONTIER MODEL TRACKER</div>
+                <h1>The <span>latest model</span> from every major lab</h1>
+                <p class="models-lead">Where Google, OpenAI, Anthropic and xAI stand right now — the flagship each one
+                    is shipping today, the features that came with it, and what has landed since launch.</p>
+
+                <div class="feed-status" id="models-status" role="status" aria-live="polite">
+                    <span class="status-dot loading"></span>
+                    <span id="models-status-text">Fetching latest model data…</span>
+                </div>
+
+                <div class="provider-jump" id="provider-jump"></div>
+            </div>
+        </section>
+
+        <section class="section" id="models">
+            <div class="container">
+                <div id="models-grid">
+                    <div class="grid-state">
+                        <div class="state-title">Fetching latest model data…</div>
+                        <div class="state-detail">Reading the labs' own release notes and announcement feeds.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">AI HORIZON</div>
+                <p>&copy; 2026 AI Horizon. Intelligence for the next era.</p>
+                <div class="social-links">
+                    <a href="#"><i data-lucide="twitter"></i></a>
+                    <a href="#"><i data-lucide="github"></i></a>
+                    <a href="#"><i data-lucide="linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="models.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
