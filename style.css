@@ -43,19 +43,29 @@ h3,
 }
 
 /* Header */
-header {
+#main-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
-    background: var(--glass);
+    /* A slightly raised surface rather than a 3% white film: the blur alone is
+       invisible on pages that have dark page background behind it instead of
+       the hero image. */
+    background: rgba(18, 18, 22, 0.82);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
     padding: 1rem 0;
+    transition: background 0.3s ease, padding 0.3s ease;
 }
 
-header .container {
+#main-header.scrolled {
+    background: rgba(5, 5, 5, 0.94);
+    padding: 0.5rem 0;
+    border-bottom-color: rgba(255, 255, 255, 0.16);
+}
+
+#main-header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -391,7 +401,7 @@ h1 span {
 }
 
 /* Footer */
-footer {
+body > footer {
     padding: 4rem 0;
     border-top: 1px solid var(--border);
 }
@@ -495,9 +505,32 @@ footer {
 
 @media (max-width: 768px) {
 
-    nav,
     .search-box {
         display: none;
+    }
+
+    /* The nav used to be hidden here with nothing to replace it, so the menu
+       simply vanished on narrow screens. Wrap it onto its own row instead. */
+    #main-header .container {
+        flex-wrap: wrap;
+        row-gap: 0.6rem;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+    }
+
+    nav ul {
+        gap: 1.4rem;
+        justify-content: center;
+        overflow-x: auto;
+        padding-bottom: 0.2rem;
+    }
+
+    nav a {
+        font-size: 0.82rem;
+        white-space: nowrap;
     }
 
     h1 {
@@ -573,7 +606,8 @@ footer {
     }
 }
 
-#refresh-news {
+#refresh-news,
+#refresh-models {
     background: none;
     border: none;
     color: var(--text-muted);
@@ -583,11 +617,13 @@ footer {
     transition: var(--transition);
 }
 
-#refresh-news:hover {
+#refresh-news:hover,
+#refresh-models:hover {
     color: var(--primary);
 }
 
-#refresh-news.spinning i {
+#refresh-news.spinning i,
+#refresh-models.spinning i {
     animation: spin 1s linear infinite;
 }
 
@@ -1116,7 +1152,7 @@ a.logo {
 
 @media (max-width: 768px) {
     .models-intro {
-        padding: 8rem 0 2rem;
+        padding: 9.5rem 0 2rem;
     }
 
     .model-card {

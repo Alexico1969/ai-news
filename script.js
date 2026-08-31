@@ -265,16 +265,9 @@ document.getElementById('market-pulse')?.addEventListener('click', () => {
 document.getElementById('refresh-news')?.addEventListener('click', () => loadNews({ force: true }));
 
 window.addEventListener('scroll', () => {
-    const header = document.getElementById('main-header');
-    if (!header) return;
-
-    if (window.scrollY > 50) {
-        header.style.padding = '0.5rem 0';
-        header.style.background = 'rgba(5, 5, 5, 0.9)';
-    } else {
-        header.style.padding = '1rem 0';
-        header.style.background = 'var(--glass)';
-    }
+    // Toggle a class rather than writing inline styles, which would otherwise
+    // override the stylesheet's header background for the rest of the visit.
+    document.getElementById('main-header')?.classList.toggle('scrolled', window.scrollY > 50);
 });
 
 document.querySelectorAll('nav a').forEach((anchor) => {

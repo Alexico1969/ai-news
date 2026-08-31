@@ -129,7 +129,7 @@ function providerCard(provider) {
 
     return `
         <article class="model-card" id="provider-${escapeHtml(provider.id)}" style="--accent-hue: ${Number(provider.hue) || 200}">
-            <header class="model-card-head">
+            <div class="model-card-head">
                 <div class="model-vendor">
                     <span class="vendor-mark">${escapeHtml(provider.name.slice(0, 2).toUpperCase())}</span>
                     <div>
@@ -138,7 +138,7 @@ function providerCard(provider) {
                     </div>
                 </div>
                 <span class="model-status">${escapeHtml(provider.model.status)}</span>
-            </header>
+            </div>
 
             <h2 class="model-name">${escapeHtml(provider.model.name)}</h2>
             <p class="model-tagline">${escapeHtml(provider.model.tagline)}</p>
@@ -159,7 +159,7 @@ function providerCard(provider) {
 
             ${updatesBlock(provider)}
 
-            <footer class="model-card-foot">${links}</footer>
+            <div class="model-card-foot">${links}</div>
         </article>`;
 }
 
@@ -275,16 +275,9 @@ async function loadModels({ force = false } = {}) {
 refreshBtn?.addEventListener('click', () => loadModels({ force: true }));
 
 window.addEventListener('scroll', () => {
-    const header = document.getElementById('main-header');
-    if (!header) return;
-
-    if (window.scrollY > 50) {
-        header.style.padding = '0.5rem 0';
-        header.style.background = 'rgba(5, 5, 5, 0.9)';
-    } else {
-        header.style.padding = '1rem 0';
-        header.style.background = 'var(--glass)';
-    }
+    // Toggle a class rather than writing inline styles, which would otherwise
+    // override the stylesheet's header background for the rest of the visit.
+    document.getElementById('main-header')?.classList.toggle('scrolled', window.scrollY > 50);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
